@@ -10,4 +10,5 @@ public interface EmployeeService {
 	List<Employee> getempAll();
 	Employee getEmpById(long id);
 	Employee updateEmployee(Employee employee, long id);
+	void deleteEmployee(long id);
 }
