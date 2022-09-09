@@ -9,4 +9,5 @@ public interface EmployeeService {
 	Employee saveEmployee(Employee employee);
 	List<Employee> getempAll();
 	Employee getEmpById(long id);
+	Employee updateEmployee(Employee employee, long id);
 }
