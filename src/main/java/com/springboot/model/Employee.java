@@ -4,10 +4,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.GeneratorType;
@@ -20,12 +24,15 @@ import lombok.Data;
 public class Employee {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(generator = "emp_seq", strategy = GenerationType.IDENTITY)
+	@SequenceGenerator(name="emp_seq",initialValue = 100,allocationSize = 1)     //,sequenceName = "emp"
 	private Long eid;
 	
 	@NotNull
 	@Size(min=2, max=10)
+	@Pattern(regexp = "^[A-Z][a-z]*",message = "Employee Name should be starts capital letter")
 	private String ename;
+	
 	
 	private String dob;
 	
@@ -33,8 +40,11 @@ public class Employee {
 	
 	@NotEmpty
 	@Size(min=10, max=10)
+	@Pattern(regexp = "^[6789][0-9]{9}",message = "Enter valid phone number")
 	private String phone;
 	
+	 
+	@Positive
 	private int salary;
 	
 	
