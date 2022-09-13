@@ -29,17 +29,18 @@ public class Employee {
 	private Long eid;
 	
 	@NotNull
-	@Size(min=2, max=10)
-	@Pattern(regexp = "^[A-Z][a-z]*",message = "Employee Name should be starts capital letter")
+	@Size(min=2, max=10,message = "Employee name should start with uppercase and should not be less than 2 character")
+	@Pattern(regexp = "^[A-Z][a-z]*",message = "Employee name should start with uppercase and should not be less than 2 character")
 	private String ename;
 	
-	
+	@NotEmpty
 	private String dob;
 	
+	@NotEmpty
 	private String gender;
 	
 	@NotEmpty
-	@Size(min=10, max=10)
+	@Size(min=10, max=10,message = "Enter valid phone number")
 	@Pattern(regexp = "^[6789][0-9]{9}",message = "Enter valid phone number")
 	private String phone;
 	
